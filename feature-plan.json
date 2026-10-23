@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "current_feature": "core-skeleton",
+  "features": [
+    {
+      "id": "core-skeleton",
+      "title": "FastAPI/React skeleton with basic inference benchmark endpoint",
+      "status": "done",
+      "acceptance": [
+        "FastAPI app runs with /health endpoint",
+        "React + Vite frontend builds and serves",
+        "POST /api/v1/benchmark accepts model config and returns token/s metrics",
+        "Dockerfiles for backend and frontend build",
+        "docker-compose.yml with backend, frontend, Keycloak",
+        "Backend tests pass (pytest)",
+        "Frontend typecheck/build/test pass"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "backend/app/api/benchmark.py",
+        "backend/app/services/inference.py",
+        "backend/app/models/schemas.py",
+        "backend/app/core/config.py",
+        "backend/requirements.txt",
+        "backend/tests/test_benchmark.py",
+        "frontend/package.json",
+        "frontend/src/main.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/api/client.ts",
+        "frontend/src/components/BenchmarkForm.tsx",
+        "frontend/src/hooks/useBenchmark.ts",
+        "frontend/src/types/api.ts",
+        "Dockerfile.backend",
+        "Dockerfile.frontend",
+        "docker-compose.yml",
+        ".env.example"
+      ],
+      "tests": [
+        "backend/tests/test_benchmark.py",
+        "frontend/src/__tests__/BenchmarkForm.test.tsx"
+      ]
+    },
+    {
+      "id": "auth-oidc",
+      "title": "OIDC Keycloak authentication with SPA PKCE flow",
+      "status": "planned",
+      "acceptance": [
+        "Login redirects to Keycloak",
+        "Callback exchanges code for tokens with PKCE",
+        "Access token stored in memory, used for API calls",
+        "Logout clears session",
+        "Protected endpoints reject unauthenticated requests"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "llm-adapters",
+      "title": "LLM provider adapters (OpenAI-compatible, Anthropic, Gemini, Ollama)",
+      "status": "planned",
+      "acceptance": [
+        "Configurable provider via LLM_PROVIDER env",
+        "Adapters implement common interface",
+        "Bounded timeouts and redacted errors",
+        "Keys only server-side"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "real-inference",
+      "title": "Real LLM inference benchmarking with token streaming",
+      "status": "planned",
+      "acceptance": [
+        "Streams tokens from configured provider",
+        "Measures TTFT, TPOT, throughput",
+        "Returns structured metrics",
+        "Handles provider errors gracefully"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "results-persistence",
+      "title": "SQLite persistence for benchmark runs and results",
+      "status": "planned",
+      "acceptance": [
+        "Stores benchmark config and results",
+        "Pagination and filtering on history endpoint",
+        "UTC timestamps, audit log"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "export-workflow",
+      "title": "Export benchmark results (JSON, CSV)",
+      "status": "planned",
+      "acceptance": [
+        "Export single run or filtered history",
+        "Download from frontend"
+      ],
+      "implementation": [],
+      "tests": []
+    }
+  ]
+}
