@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     llm_api_key: str = ""
     llm_base_url: str = ""
 
+    # Keycloak/OIDC settings
+    keycloak_url: str = "http://localhost:8080"
+    keycloak_realm: str = "axiom"
+    keycloak_client_id: str = "axiom-frontend"
+    keycloak_client_secret: str = ""
+
     class Config:
         env_file = ".env"
         case_sensitive = False

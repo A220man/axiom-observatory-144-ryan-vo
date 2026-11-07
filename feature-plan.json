@@ -43,7 +43,7 @@
     {
       "id": "auth-oidc",
       "title": "OIDC Keycloak authentication with SPA PKCE flow",
-      "status": "planned",
+      "status": "done",
       "acceptance": [
         "Login redirects to Keycloak",
         "Callback exchanges code for tokens with PKCE",
@@ -51,8 +51,25 @@
         "Logout clears session",
         "Protected endpoints reject unauthenticated requests"
       ],
-      "implementation": [],
-      "tests": []
+      "implementation": [
+        "backend/app/api/auth.py",
+        "backend/app/models/auth.py",
+        "backend/app/core/config.py",
+        "backend/requirements.txt",
+        "backend/app/main.py",
+        "backend/app/api/benchmark.py",
+        "backend/tests/test_auth.py",
+        "frontend/src/types/auth.ts",
+        "frontend/src/api/client.ts",
+        "frontend/src/hooks/useAuth.ts",
+        "frontend/src/components/LoginButton.tsx",
+        "frontend/src/components/Callback.tsx",
+        "frontend/src/App.tsx"
+      ],
+      "tests": [
+        "backend/tests/test_auth.py",
+        "frontend/src/__tests__/useAuth.test.tsx"
+      ]
     },
     {
       "id": "llm-adapters",
