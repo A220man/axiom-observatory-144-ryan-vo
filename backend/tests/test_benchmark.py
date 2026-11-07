@@ -2,6 +2,9 @@ import pytest
 from httpx import AsyncClient, ASGITransport
 from app.main import app
 from app.models.schemas import TokenMetrics, BenchmarkRequest
+from app.api.auth import require_auth, get_current_user
+from app.models.auth import UserInfo
+from fastapi import Depends
 
 
 @pytest.fixture(scope="session")
@@ -10,6 +13,20 @@ def event_loop():
     loop = asyncio.new_event_loop()
     yield loop
     loop.close()
+
+
+# Mock user for testing
+test_user = UserInfo(
+    sub="test-user",
+    preferred_username="testuser",
+    email="test@example.com",
+    name="Test User",
+    roles=["user"],
+)
+
+
+# Override auth dependency for testing
+app.dependency_overrides[require_auth] = lambda: test_user
 
 
 async def get_client():

@@ -27,7 +27,7 @@ Tests: `backend/tests/test_benchmark.py`, `frontend/src/__tests__/BenchmarkForm.
 
 ### auth-oidc — OIDC Keycloak authentication with SPA PKCE flow
 
-Status: planned
+Status: done
 
 Acceptance:
 - Login redirects to Keycloak
@@ -35,6 +35,10 @@ Acceptance:
 - Access token stored in memory, used for API calls
 - Logout clears session
 - Protected endpoints reject unauthenticated requests
+
+Implementation: `backend/app/api/auth.py`, `backend/app/models/auth.py`, `backend/app/core/config.py`, `backend/requirements.txt`, `backend/app/main.py`, `backend/app/api/benchmark.py`, `backend/tests/test_auth.py`, `frontend/src/types/auth.ts`, `frontend/src/api/client.ts`, `frontend/src/hooks/useAuth.ts`, `frontend/src/components/LoginButton.tsx`, `frontend/src/components/Callback.tsx`, `frontend/src/App.tsx`
+
+Tests: `backend/tests/test_auth.py`, `frontend/src/__tests__/useAuth.test.tsx`
 
 ### llm-adapters — LLM provider adapters (OpenAI-compatible, Anthropic, Gemini, Ollama)
 
