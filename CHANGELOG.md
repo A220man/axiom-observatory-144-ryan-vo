@@ -1,8 +1,31 @@
 # Changelog
 
-## 1.3.0 — work-in-progress checkpoint
+## 1.4.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.3.0 — work-in-progress checkpoint
+
+Implemented llm-adapters feature: LLM provider adapters for real inference benchmarking.
+
+### Backend
+- Added base `LLMAdapter` interface with common metrics (TTFT, TPOT, throughput) and key redaction
+- Implemented OpenAI-compatible adapter (OpenAI, vLLM, LM Studio, etc.) with streaming support
+- Implemented Anthropic adapter (Claude models) with streaming support
+- Implemented Google Gemini adapter with streaming support
+- Implemented Ollama adapter (local models) with streaming support
+- Added adapter factory for provider selection via `ProviderType` enum
+- Updated `InferenceService` to route requests to real adapters for non-simulated providers
+- Maintained simulated provider for testing without API keys
+- 9 new adapter factory tests, all 30 backend tests pass
+
+### Frontend
+- No frontend changes required (existing provider selector works with new adapters)
+- All 7 frontend tests pass, typecheck and build succeed
+
+### Configuration
+- Provider configurable via `LLM_PROVIDER` env (defaults to `simulated`)
+- API keys and base URLs only on server side via `LLM_API_KEY`, `LLM_BASE_URL`, `LLM_MODEL`
 
 ## 1.2.0 — work-in-progress checkpoint
 
