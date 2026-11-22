@@ -5,12 +5,18 @@
     {
       "id": "continue-implementation",
       "title": "Continue implementation and resolve known failures",
-      "status": "in_progress",
+      "status": "done",
       "acceptance": [
         "Run checks, fix failures, and implement the next planned feature"
       ],
-      "implementation": [],
-      "tests": []
+      "implementation": [
+        "Added SimulatedAdapter implementing LLMAdapter interface",
+        "Updated adapter factory to support SIMULATED provider type",
+        "Added 4 new adapter tests for simulated provider"
+      ],
+      "tests": [
+        "tests/test_adapters.py::TestSimulatedAdapter tests"
+      ]
     }
   ]
 }

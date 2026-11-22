@@ -10,8 +10,12 @@ continue-implementation
 
 ### continue-implementation — Continue implementation and resolve known failures
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - Run checks, fix failures, and implement the next planned feature
+
+Implementation: `Added SimulatedAdapter implementing LLMAdapter interface`, `Updated adapter factory to support SIMULATED provider type`, `Added 4 new adapter tests for simulated provider`
+
+Tests: `tests/test_adapters.py::TestSimulatedAdapter tests`
 
