@@ -4,6 +4,7 @@ from app.services.adapters.openai_adapter import OpenAICompatibleAdapter
 from app.services.adapters.anthropic_adapter import AnthropicAdapter
 from app.services.adapters.gemini_adapter import GeminiAdapter
 from app.services.adapters.ollama_adapter import OllamaAdapter
+from app.services.adapters.simulated_adapter import SimulatedAdapter
 from app.models.schemas import ProviderType
 from app.core.config import settings
 
@@ -16,7 +17,7 @@ def create_adapter(
     timeout_seconds: float = 30.0,
 ) -> LLMAdapter:
     """Factory function to create the appropriate LLM adapter."""
-    
+
     # Use settings as defaults
     api_key = api_key or settings.llm_api_key
     base_url = base_url or settings.llm_base_url
@@ -41,6 +42,9 @@ def create_adapter(
         if not base_url:
             base_url = "http://localhost:11434"
         return OllamaAdapter(api_key, base_url, model, timeout_seconds)
+
+    elif provider == ProviderType.SIMULATED:
+        return SimulatedAdapter(api_key or "simulated", base_url or "simulated://model", model or "simulated-model", timeout_seconds)
 
     else:
         raise ValueError(f"Unsupported provider: {provider}")
