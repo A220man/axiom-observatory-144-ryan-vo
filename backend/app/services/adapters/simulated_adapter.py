@@ -99,14 +99,6 @@ class SimulatedAdapter(LLMAdapter):
             tokens.append(tok_text)
         completion_text = "".join(tokens)
 
-        # Also measure wall-clock time for the generation (include token rendering)
-        total_time_ms = (time.perf_counter() - start_time) * 1000
-        metrics = self._calculate_metrics(
-            ttft_ms=ttft_ms,
-            completion_tokens=completion_tokens,
-            total_time_ms=max(total_time_ms, 1.0),
-            prompt_tokens=prompt_tokens,
-        )
 
         return InferenceResult(
             metrics=metrics,
